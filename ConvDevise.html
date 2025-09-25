@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +42,7 @@
       <h2>Historique</h2>
       <div class="controls">
         <button id="clearHistory" class="small" onclick="clear_historique()">Effacer l'historique</button>
-        <button id="exportHistory" class="small" onclick="json_export()">Exporter JSON</button>
+        <button id="exportHistory" class="small" onclick="json_export_history()">Exporter JSON</button>
       </div>
       <div class="history" id="historyList" aria-live="polite"></div>
     </aside>
@@ -55,61 +54,3 @@
 
     <script src="index.js"></script>
 </body>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convertisseur Devise</title>
- </head>
- <body>
-     <div class="container" role="main">
-  <div>
-      <h1>Convertisseur de Devises</h1>
-      <div class="converter" aria-live="polite">
-        <div class="row">
-          <div style="flex:1">
-            <form action="">
-              <label for="Montant">Montant :</label>
-                <input type="text" name="Montant" id="Montant">
-                <br>
-              <label for="Devise_Origine">Devise d'origine :</label>
-                <input type="text" name="Devise_Origine" id="Devise_Origine">
-                <br>
-              <label for="Devise_Souhaitee">Devise Souhaitée :</label>
-                <input type="text" name="Devise_Souhaitee" id="Devise_Souhaitee">
-                <input type="submit" value="Convertir">
-                <br>
-              <label for="Montant_converti">Montant Converti :</label>
-                <input type="text" name="Montant_converti" id="Montant_converti">
-                <br>
-            </form>
-          </div>
-          <div style="width:160px">
-            <label>&nbsp;</label>
-            <button id="save" class="primary">Sauvegarder</button>
-          </div>
-        </div>
-        <div class="meta">Les conversions se mettent à jour en temps réel.</div>
-      </div>
-    </div>
-
-    <aside class="right">
-      <h2>Historique</h2>
-      <div class="controls">
-        <button id="clearHistory" class="small">Effacer l'historique</button>
-        <button id="exportHistory" class="small">Exporter JSON</button>
-      </div>
-      <div class="history" id="historyList" aria-live="polite"></div>
-    </aside>
-    <footer>
-      <span>Utilise l'API exchangerate-api.com.</span>
-    </footer>
-  </div>
-
-
-    <script src=""></script>
-</body>
->>>>>>> da0b8450479805e31de144eab88e6c188a458846
-</html>
