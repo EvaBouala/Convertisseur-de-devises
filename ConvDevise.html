@@ -5,26 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convertisseur Devise</title>
     <link rel="stylesheet" href="CSSDevise.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+</head>
 
  <body>
-     <div class="container" role="main">
+    <!-- <div class="container" role="main"> -->
   <div>
-      <h1>Convertisseur de Devises</h1>
+      <h1><big><big><big><big>Convertisseur de Devises</big></big></big></big></h1>
+      <h3><big>Convertir l'argent facilement</big></h3>
       <div class="converter" aria-live="polite">
         <div class="row">
           <div style="flex:1">
             <form action="">
-              <label for="Montant">Montant :</label>
+              <label for="Montant">Montant</label>
                 <input type="text" name="Montant" id="Montant">
                 <br>
-              <label for="Devise_Origine">Devise d'origine :</label>
+              <label for="Devise_Origine">Devise d'origine</label>
                 <input type="text" name="Devise_Origine" id="Devise_Origine">
                 <br>
-              <label for="Devise_Souhaitee">Devise Souhaitée :</label>
+              <label for="Devise_Souhaitee">Devise Souhaitée</label>
                 <input type="text" name="Devise_Souhaitee" id="Devise_Souhaitee">
                 <input type="submit" value="Convertir">
                 <br>
-              <label for="Montant_converti">Montant Converti :</label>
+              <label for="Montant_converti">Montant Converti</label>
                 <input type="text" name="Montant_converti" id="Montant_converti">
                 <br>
             </form>
@@ -52,5 +57,5 @@
   </div>
 
 
-    <script src="index.js"></script>
+    <script src="API.js"></script>
 </body>
