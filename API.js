@@ -1,54 +1,42 @@
-// ===== Configuration API =====
-const API_KEY = "be2315b040c6b484d5b095cd";
-const API_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/latest/`;
+// Ta clé API
+const apiKey = "be2315b040c6b484d5b095cd"; 
 
-// ===== Sélection des éléments HTML =====
-const montantInput = document.getElementById("Montant");
+// URL de base (USD comme référence)
+const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`;
+
+// Sélecteurs des menus déroulants
 const deviseOrigine = document.getElementById("Devise_Origine");
 const deviseSouhaitee = document.getElementById("Devise_Souhaitee");
-const montantConverti = document.getElementById("Montant_converti");
-const form = document.querySelector("form");
 
-// ===== Fonction pour convertir =====
-async function convertirDevise() {
-  const montant = parseFloat(montantInput.value);
-  const fromCurrency = deviseOrigine.value.toUpperCase();
-  const toCurrency = deviseSouhaitee.value.toUpperCase();
-
-  if (isNaN(montant) || !fromCurrency || !toCurrency) {
-    montantConverti.value = "Erreur";
-    return;
-  }
-
+// Charger les devises depuis l’API
+async function chargerDevises() {
   try {
-    // On récupère les taux de la devise d'origine
-    const response = await fetch(`${API_URL}${fromCurrency}`);
-    const data = await response.json();
-
+    const response = await fetch(apiUrl);        // appel API
+    const data = await response.json();          // conversion JSON
+    
     if (data.result !== "success") {
-      montantConverti.value = "Erreur API";
-      return;
+      throw new Error("Erreur API : " + data["error-type"]);
     }
 
-    // Récupération du taux de la devise souhaitée
-    const rate = data.conversion_rates[toCurrency];
-    if (!rate) {
-      montantConverti.value = "Devise inconnue";
-      return;
-    }
+    // Récupérer toutes les devises disponibles
+    const devises = Object.keys(data.conversion_rates);
 
-    // Calcul
-    const resultat = montant * rate;
-    montantConverti.value = `${resultat.toFixed(2)} ${toCurrency}`;
+    // Ajouter chaque devise comme <option> dans les deux menus
+    devises.forEach(devise => {
+      let option1 = new Option(devise, devise);
+      let option2 = new Option(devise, devise);
+      deviseOrigine.add(option1);
+      deviseSouhaitee.add(option2);
+    });
+
+    // Valeurs par défaut
+    deviseOrigine.value = "USD";
+    deviseSouhaitee.value = "EUR";
 
   } catch (error) {
-    console.error("Erreur API :", error);
-    montantConverti.value = "Erreur réseau";
+    console.error("Impossible de charger les devises :", error);
   }
 }
 
-// ===== Gestion du formulaire =====
-form.addEventListener("submit", function (e) {
-  e.preventDefault(); // Empêche le rechargement de la page
-  convertirDevise();
-});
+// Appeler la fonction au chargement
+chargerDevises();
