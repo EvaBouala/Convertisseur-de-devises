@@ -40,3 +40,36 @@ async function chargerDevises() {
 
 // Appeler la fonction au chargement
 chargerDevises();
+// Sélecteurs des menus déroulants
+const devise_Origine = document.getElementById("Devise_Origine");
+const devise_Souhaitee = document.getElementById("Devise_Souhaitee");
+
+// Charger les devises depuis l’API
+async function chargerDevises() {
+  try {
+    const response = await fetch(apiUrl);        // appel API
+    const data = await response.json();          // conversion JSON
+    
+    if (data.result !== "success") {
+      throw new Error("Erreur API : " + data["error-type"]);
+    }
+
+    // Récupérer toutes les devises disponibles
+    const devises = Object.keys(data.conversion_rates);
+
+    // Ajouter chaque devise comme <option> dans les deux menus
+    devises.forEach(devise => {
+      let option1 = new Option(devise, devise);
+      let option2 = new Option(devise, devise);
+      deviseOrigine.add(option1);
+      deviseSouhaitee.add(option2);
+    });
+
+    // Valeurs par défaut
+    deviseOrigine.value = "USD";
+    deviseSouhaitee.value = "EUR";
+
+  } catch (error) {
+    console.error("Impossible de charger les devises :", error);
+  }
+}
