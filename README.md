@@ -1,2 +1,3 @@
 # Convertisseur-de-devises
-git 
+Jessé Lazare Kamwa Tsobgny
+Bouala Eva 
