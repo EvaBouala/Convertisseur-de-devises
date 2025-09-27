@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertisseur Devise</title>
+    <link rel="stylesheet" href="CSSDevise.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+</head>
+ <body>
+     <div class="container" role="main">
+  <div>
+      <h1><big><big><big><big>Convertisseur de Devises</big></big></big></big></h1>
+      <h3><big>Convertir l'argent facilement</big></h3>
+      <div class="converter" aria-live="polite">
+        <div class="row">
+          <div style="flex:1">
+            <form action="">
+              <label for="Montant">Montant</label>
+                <input type="text" name="Montant" id="Montant">
+                <br>
+              <label for="Devise_Origine">Devise d'origine</label>
+                <select id="Devise_Origine" name="Devise_Origine"></select>
+
+              <label for="Devise_Souhaitee">Devise souhaitée</label>
+                <select id="Devise_Souhaitee" name="Devise_Souhaitee"></select>
+
+                <input type="submit" value="Convertir">
+                <br>
+              <label for="Montant_converti">Montant Converti</label>
+                <input type="text" name="Montant_converti" id="Montant_converti">
+                <br>
+            </form>
+          </div>
+          <div style="width:160px">
+            <label>&nbsp;</label>
+            <button id="save" class="primary" onclick="save()">Sauvegarder</button>
+            <div id="derniereConversion"></div>
+          </div>
+    </div>
+
+    <aside class="right">
+      <h2>Historique</h2>
+      <div class="controls">
+        <button id="clearHistory" class="small" onclick="clear_historique()">Effacer l'historique</button>
+        <button id="exportHistory" class="small" onclick="exporter_historique()">Exporter JSON</button>
+      </div>
+      <div class="history" id="historyList" aria-live="polite"></div>
+    </aside>
+    <footer>
+      <span>© API exchangerate-api.com.</span>
+    </footer>
+  </div>
+
+
+    <script src="script_js.js"></script>
+</body>
+</html>
